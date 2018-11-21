@@ -2,6 +2,6 @@
 {
     public interface ICheckoutHandler
     {
-        decimal CalculateBasketTotal();
+        decimal CalculateBasketTotal(IBasket basket);
     }
 }

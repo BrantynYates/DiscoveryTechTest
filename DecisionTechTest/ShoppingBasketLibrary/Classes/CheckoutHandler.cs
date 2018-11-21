@@ -5,28 +5,26 @@ namespace ShoppingBasketLibrary.Classes
 {
     public class CheckoutHandler : ICheckoutHandler
     {
-        private IBasket _basket;
         private IDiscountCalculator _calc;
 
-        public CheckoutHandler(IBasket basket, IDiscountCalculator calc)
+        public CheckoutHandler(IDiscountCalculator calc)
         {
-            _basket = basket;
             _calc = calc;
         }
 
-        public decimal CalculateBasketTotal()
+        public decimal CalculateBasketTotal(IBasket basket)
         {
-            if (_basket == null)
+            if (basket == null)
                 throw new ArgumentNullException("Basket is null");
 
             if (_calc == null)
                 throw new ArgumentNullException("Calculator is null");
 
             // Get baskets total
-            var total = _basket.GetTotal();
+            var total = basket.GetTotal();
 
             // Apply discounts
-            var discount = _calc.CalculateDiscount(_basket.Items);
+            var discount = _calc.CalculateDiscount(basket.Items);
 
             return total - discount;
         }

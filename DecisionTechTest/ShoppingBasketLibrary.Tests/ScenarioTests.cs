@@ -1,5 +1,7 @@
 ﻿using ShoppingBasketLibrary.Classes;
+using ShoppingBasketLibrary.Interfaces;
 using ShoppingBasketLibrary.Models;
+using System.Collections.Generic;
 using Xunit;
 
 namespace ShoppingBasketLibrary.Tests
@@ -14,14 +16,22 @@ namespace ShoppingBasketLibrary.Tests
         public void GetTotal_returns_correct_price_where_no_discount_is_added()
         {
             // Arrange
+            var offers = new List<IDiscountOffer>
+            {
+                new FreeMilkOffer(),
+                new HalfPriceBreadOffer()
+            };
+
             var basket = new Basket();
+            var calc = new DiscountCalculator(offers);
+            var handler = new CheckoutHandler(calc);
 
             basket.AddItem(new Bread());
             basket.AddItem(new Butter());
             basket.AddItem(new Milk());
 
             // Act
-            var result = basket.GetTotal();
+            var result = handler.CalculateBasketTotal(basket);
 
             // Assert
             Assert.Equal(2.95M, result);
@@ -35,7 +45,15 @@ namespace ShoppingBasketLibrary.Tests
         public void GetTotal_returns_correct_discounted_price_for_one_half_price_bread()
         {
             // Arrange
+            var offers = new List<IDiscountOffer>
+            {
+                new FreeMilkOffer(),
+                new HalfPriceBreadOffer()
+            };
+
             var basket = new Basket();
+            var calc = new DiscountCalculator(offers);
+            var handler = new CheckoutHandler(calc);
 
             basket.AddItem(new Butter());
             basket.AddItem(new Butter());
@@ -43,7 +61,7 @@ namespace ShoppingBasketLibrary.Tests
             basket.AddItem(new Bread());
 
             // Act
-            var result = basket.GetTotal();
+            var result = handler.CalculateBasketTotal(basket);
 
             // Assert
             Assert.Equal(3.10M, result);
@@ -57,7 +75,15 @@ namespace ShoppingBasketLibrary.Tests
         public void GetTotal_returns_correct_discounted_price_for_one_free_milk()
         {
             // Arrange
+            var offers = new List<IDiscountOffer>
+            {
+                new FreeMilkOffer(),
+                new HalfPriceBreadOffer()
+            };
+
             var basket = new Basket();
+            var calc = new DiscountCalculator(offers);
+            var handler = new CheckoutHandler(calc);
 
             for (int i = 0; i < 4; i++)
             {
@@ -65,7 +91,7 @@ namespace ShoppingBasketLibrary.Tests
             }
 
             // Act
-            var result = basket.GetTotal();
+            var result = handler.CalculateBasketTotal(basket);
 
             // Assert
             Assert.Equal(3.45M, result);
@@ -79,7 +105,15 @@ namespace ShoppingBasketLibrary.Tests
         public void GetTotal_returns_correct_price_where_multiple_discounts_are_applied()
         {
             // Arrange
+            var offers = new List<IDiscountOffer>
+            {
+                new FreeMilkOffer(),
+                new HalfPriceBreadOffer()
+            };
+
             var basket = new Basket();
+            var calc = new DiscountCalculator(offers);
+            var handler = new CheckoutHandler(calc);
 
             basket.AddItem(new Butter());
             basket.AddItem(new Butter());
@@ -91,7 +125,7 @@ namespace ShoppingBasketLibrary.Tests
             }
 
             // Act
-            var result = basket.GetTotal();
+            var result = handler.CalculateBasketTotal(basket);
 
             // Assert
             Assert.Equal(9M, result);

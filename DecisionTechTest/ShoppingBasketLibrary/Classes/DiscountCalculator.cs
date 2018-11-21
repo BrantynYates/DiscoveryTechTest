@@ -23,7 +23,7 @@ namespace ShoppingBasketLibrary.Classes
 
             decimal discount = 0;
 
-            // Calculate each of the discounts from avaiblabe offers
+            // Calculate each of the discounts from available offers
             foreach (var offer in _offers)
             {
                 discount += offer.GetDiscount(items);
