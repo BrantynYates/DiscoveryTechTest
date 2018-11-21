@@ -15,7 +15,7 @@ namespace ShoppingBasketLibrary.Classes
         public void AddItem(IProduct item)
         {
             if (item == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Item is null");
 
             _items.Add(item);
         }

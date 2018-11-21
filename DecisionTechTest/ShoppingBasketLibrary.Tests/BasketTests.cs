@@ -8,7 +8,7 @@ namespace ShoppingBasketLibrary.Tests
     public class BasketTests
     {
         [Fact]
-        public void AddItem_throws_exception()
+        public void AddItem_throws_null_argument_exception_when_passed_null_item()
         {
             // Arrrange
             var basket = new Basket();

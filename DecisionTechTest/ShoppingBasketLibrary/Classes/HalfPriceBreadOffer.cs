@@ -1,5 +1,6 @@
 ﻿using ShoppingBasketLibrary.Interfaces;
 using ShoppingBasketLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,9 @@ namespace ShoppingBasketLibrary.Classes
 
         public decimal GetDiscount(IEnumerable<IProduct> items)
         {
+            if (items == null)
+                throw new ArgumentNullException("Item list is null");
+
             // Get butter items to calculate discount
             var butter = items.Where(i => i.GetType() == typeof(Butter));
             if (!butter.Any())

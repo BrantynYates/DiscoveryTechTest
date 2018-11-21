@@ -1,6 +1,7 @@
 ﻿using ShoppingBasketLibrary.Classes;
 using ShoppingBasketLibrary.Interfaces;
 using ShoppingBasketLibrary.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Xunit;
@@ -9,6 +10,16 @@ namespace ShoppingBasketLibrary.Tests
 {
     public class HalfPriceBreadOfferTests
     {
+        [Fact]
+        public void GetDiscount_throws_null_argument_exception_when_passed_null_object()
+        {
+            // Arrrange
+            var offer = new FreeMilkOffer();
+
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => offer.GetDiscount(null));
+        }
+
         [Theory]
         [ClassData(typeof(BreadOfferData))]
         public void GetDiscount_returns_correct_dicscount_amount(int butterCount, int breadCount, decimal expected)
