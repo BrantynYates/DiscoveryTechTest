@@ -1,8 +1,5 @@
 ﻿using ShoppingBasketLibrary.Classes;
 using ShoppingBasketLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace ShoppingBasketLibrary.Tests

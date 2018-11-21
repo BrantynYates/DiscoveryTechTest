@@ -1,4 +1,5 @@
 ﻿using ShoppingBasketLibrary.Interfaces;
+using ShoppingBasketLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,21 @@ namespace ShoppingBasketLibrary.Classes
             if (_items == null)
                 throw new ArgumentNullException();
 
-            return _items.Sum(i => i.Price);
+            // Sum the initial total for discounts to be applied to
+            var total = _items.Sum(i => i.Price);
+
+            var discount = 0M;
+
+            // Get milk items to calculate discount
+            var milk = _items.Where(i => i.GetType() == typeof(Milk));
+
+            if (milk.Any())
+            {
+                var discountsAvailable = milk.Count() / 4;
+                discount = discountsAvailable * new Milk().Price;
+            }
+
+            return total - discount;
         }
     }
 }
