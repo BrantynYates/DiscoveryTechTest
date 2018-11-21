@@ -1,0 +1,9 @@
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\bin\Debug\netcoreapp2.1\ShoppingBasketLibrary.deps.json
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\bin\Debug\netcoreapp2.1\ShoppingBasketLibrary.dll
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\bin\Debug\netcoreapp2.1\ShoppingBasketLibrary.pdb
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.csprojAssemblyReference.cache
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.csproj.CoreCompileInputs.cache
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.AssemblyInfoInputs.cache
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.AssemblyInfo.cs
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.dll
+C:\Users\BrantynYates\Desktop\SoftwareTests\DecisionTechTest\DecisionTechTest\ShoppingBasketLibrary\obj\Debug\netcoreapp2.1\ShoppingBasketLibrary.pdb

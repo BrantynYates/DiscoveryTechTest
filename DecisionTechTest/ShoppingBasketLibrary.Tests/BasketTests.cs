@@ -11,21 +11,55 @@ namespace ShoppingBasketLibrary.Tests
         public void AddItem_throws_exception()
         {
             // Arrrange
-            var item = new Product();
             var basket = new Basket();
 
             // Assert
-            Assert.ThrowsAny<Exception>(() => basket.AddItem(item));
+            Assert.Throws<ArgumentNullException>(() => basket.AddItem(null));
         }
 
         [Fact]
-        public void GetTotal_throws_exception()
+        public void AddItem_succeeds()
         {
-            // Arrrange
+            // Arrange
             var basket = new Basket();
+            var item = new Product();
+
+            // Act
+            basket.AddItem(item);
+            var result = basket.ItemCount;
 
             // Assert
-            Assert.ThrowsAny<Exception>(() => basket.GetTotal());
+            Assert.Equal(1, result);
+        }
+
+        [Fact]
+        public void GetTotal_returns_zero()
+        {
+            // Arrange
+            var basket = new Basket();
+
+            // Act
+            var result = basket.GetTotal();
+
+            // Assert
+            Assert.Equal(0, result);
+        }
+
+        [Fact]
+        public void GetTotal_returns_correct_total_for_one_item()
+        {
+            // Arrange
+            var basket = new Basket();
+            var item = new Product();
+            item.Price = 1;
+
+            basket.AddItem(item);
+
+            // Act
+            var result = basket.GetTotal();
+
+            // Assert
+            Assert.Equal(1, result);
         }
     }
 }
