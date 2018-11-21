@@ -36,7 +36,20 @@ namespace ShoppingBasketLibrary.Classes
             if (milk.Any())
             {
                 var discountsAvailable = milk.Count() / 4;
-                discount = discountsAvailable * new Milk().Price;
+                discount += discountsAvailable * new Milk().Price;
+            }
+
+            // Get butter items to calculate discount
+            var butter = _items.Where(i => i.GetType() == typeof(Butter));
+            if (butter.Any())
+            {
+                // Get any bread items to calculate discount
+                var bread = _items.Where(i => i.GetType() == typeof(Bread));
+                if (bread.Any())
+                {
+                    var discountsAvailable = butter.Count() / 2;
+                    discount += discountsAvailable * (new Bread().Price * .5M);
+                }
             }
 
             return total - discount;
