@@ -22,7 +22,13 @@ namespace ShoppingBasketLibrary.Classes
             if (_calc == null)
                 throw new ArgumentNullException("Calculator is null");
 
-            return 0;
+            // Get baskets total
+            var total = _basket.GetTotal();
+
+            // Apply discounts
+            var discount = _calc.CalculateDiscount(_basket.Items);
+
+            return total - discount;
         }
     }
 }
