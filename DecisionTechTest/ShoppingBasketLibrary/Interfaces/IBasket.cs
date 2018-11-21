@@ -1,10 +1,8 @@
-﻿using ShoppingBasketLibrary.Models;
-
-namespace ShoppingBasketLibrary.Interfaces
+﻿namespace ShoppingBasketLibrary.Interfaces
 {
     public interface IBasket
     {
-        void AddItem(Product item);
+        void AddItem(IProduct item);
 
         decimal GetTotal();
     }

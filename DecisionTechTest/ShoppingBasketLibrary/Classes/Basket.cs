@@ -1,5 +1,4 @@
 ﻿using ShoppingBasketLibrary.Interfaces;
-using ShoppingBasketLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,11 @@ namespace ShoppingBasketLibrary.Classes
 {
     public class Basket : IBasket
     {
-        private List<Product> _items = new List<Product>();
+        private List<IProduct> _items = new List<IProduct>();
 
         public int ItemCount { get => _items.Count; }
 
-        public void AddItem(Product item)
+        public void AddItem(IProduct item)
         {
             if (item == null)
                 throw new ArgumentNullException();

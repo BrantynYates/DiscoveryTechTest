@@ -2,8 +2,8 @@
 
 namespace ShoppingBasketLibrary.Models
 {
-    public class Product : IProduct
+    public class Butter : IProduct
     {
-        public decimal Price => 1M;
+        public decimal Price => .8M;
     }
 }

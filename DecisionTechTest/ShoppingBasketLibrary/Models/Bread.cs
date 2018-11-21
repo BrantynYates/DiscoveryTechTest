@@ -2,7 +2,7 @@
 
 namespace ShoppingBasketLibrary.Models
 {
-    public class Product : IProduct
+    public class Bread : IProduct
     {
         public decimal Price => 1M;
     }

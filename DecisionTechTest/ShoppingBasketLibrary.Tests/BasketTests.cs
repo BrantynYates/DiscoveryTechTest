@@ -51,7 +51,6 @@ namespace ShoppingBasketLibrary.Tests
             // Arrange
             var basket = new Basket();
             var item = new Product();
-            item.Price = 1;
 
             basket.AddItem(item);
 
