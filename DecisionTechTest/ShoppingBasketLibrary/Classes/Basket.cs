@@ -28,29 +28,14 @@ namespace ShoppingBasketLibrary.Classes
             // Sum the initial total for discounts to be applied to
             var total = _items.Sum(i => i.Price);
 
+            // Apply any discounts
             var discount = 0M;
 
-            // Get milk items to calculate discount
-            var milk = _items.Where(i => i.GetType() == typeof(Milk));
+            var milkOffer = new FreeMilkOffer();
+            var breadOffer = new HalfPriceBreadOffer();
 
-            if (milk.Any())
-            {
-                var discountsAvailable = milk.Count() / 4;
-                discount += discountsAvailable * new Milk().Price;
-            }
-
-            // Get butter items to calculate discount
-            var butter = _items.Where(i => i.GetType() == typeof(Butter));
-            if (butter.Any())
-            {
-                // Get any bread items to calculate discount
-                var bread = _items.Where(i => i.GetType() == typeof(Bread));
-                if (bread.Any())
-                {
-                    var discountsAvailable = butter.Count() / 2;
-                    discount += discountsAvailable * (new Bread().Price * .5M);
-                }
-            }
+            discount += milkOffer.GetDiscount(_items);
+            discount += breadOffer.GetDiscount(_items);
 
             return total - discount;
         }

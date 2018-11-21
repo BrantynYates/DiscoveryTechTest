@@ -1,15 +1,26 @@
 ﻿using ShoppingBasketLibrary.Interfaces;
-using System;
+using ShoppingBasketLibrary.Models;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace ShoppingBasketLibrary.Classes
 {
     public class FreeMilkOffer : IDiscountOffer
     {
+        private readonly int _discountAppliedAtCount = 4;
+
         public decimal GetDiscount(IEnumerable<IProduct> items)
         {
-            throw new NotImplementedException();
+            // Get milk items to calculate discount
+            var milk = items.Where(i => i.GetType() == typeof(Milk));
+
+            if (!milk.Any())
+                return 0;
+
+            // Get max number of discounts to apply
+            var discountsAvailable = milk.Count() / _discountAppliedAtCount;
+
+            return discountsAvailable * milk.First().Price;
         }
     }
 }

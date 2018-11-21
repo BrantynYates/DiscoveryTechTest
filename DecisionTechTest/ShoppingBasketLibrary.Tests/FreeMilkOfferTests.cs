@@ -34,10 +34,10 @@ public class MilkOfferData : IEnumerable<object[]>
 {
     public IEnumerator<object[]> GetEnumerator()
     {
-        yield return new object[] { 1, 1.15M };
-        yield return new object[] { 4, 3.45M };
-        yield return new object[] { 8, 6.90M };
-        yield return new object[] { 9, 8.05M };
+        yield return new object[] { 1, 0M };
+        yield return new object[] { 4, 1.15M };
+        yield return new object[] { 8, 2.30M };
+        yield return new object[] { 9, 2.30M };
     }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

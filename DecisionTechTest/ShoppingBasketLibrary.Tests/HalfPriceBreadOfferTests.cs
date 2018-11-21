@@ -43,6 +43,7 @@ namespace ShoppingBasketLibrary.Tests
             yield return new object[] { 2, 1, .5M };
             yield return new object[] { 4, 1, .5M };
             yield return new object[] { 4, 2, 1M };
+            yield return new object[] { 4, 3, 1M };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
