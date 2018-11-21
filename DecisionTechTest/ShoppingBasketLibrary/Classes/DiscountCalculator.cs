@@ -21,7 +21,15 @@ namespace ShoppingBasketLibrary.Classes
             if (_offers == null)
                 throw new ArgumentNullException("Offers list is null");
 
-            return 0;
+            decimal discount = 0;
+
+            // Calculate each of the discounts from avaiblabe offers
+            foreach (var offer in _offers)
+            {
+                discount += offer.GetDiscount(items);
+            }
+
+            return discount;
         }
     }
 }

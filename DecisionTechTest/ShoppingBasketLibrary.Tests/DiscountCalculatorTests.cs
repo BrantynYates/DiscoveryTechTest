@@ -48,13 +48,22 @@ namespace ShoppingBasketLibrary.Tests
 
         [Theory]
         [ClassData(typeof(DiscountCalculatorData))]
-        public void CalculateDiscount_returns_correct_discount(decimal expected)
+        public void CalculateDiscount_returns_correct_discount_with_offers(int count, decimal discount, decimal expected)
         {
             // Arrange
-            var mockOffers = new Mock<IEnumerable<IDiscountOffer>>();
+            var offers = new List<IDiscountOffer>();
+
             var mockItems = new Mock<IEnumerable<IProduct>>();
 
-            var calc = new DiscountCalculator(mockOffers.Object);
+            for (int i = 0; i < count; i++)
+            {
+                var mockOffer = new Mock<IDiscountOffer>();
+                mockOffer.Setup(o => o.GetDiscount(It.IsAny<IEnumerable<IProduct>>())).Returns(discount);
+
+                offers.Add(mockOffer.Object);
+            }
+
+            var calc = new DiscountCalculator(offers);
 
             // Act
             var result = calc.CalculateDiscount(mockItems.Object);
@@ -68,8 +77,9 @@ namespace ShoppingBasketLibrary.Tests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { .5 };
-            yield return new object[] { 1 };
+            yield return new object[] { 1, .5M,.5M };
+            yield return new object[] { 2, .5M, 1M };
+            yield return new object[] { 3, .5M, 1.5M };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

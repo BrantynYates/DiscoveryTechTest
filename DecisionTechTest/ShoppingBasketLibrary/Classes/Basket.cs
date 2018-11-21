@@ -23,7 +23,7 @@ namespace ShoppingBasketLibrary.Classes
         public decimal GetTotal()
         {
             if (_items == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Items list is null");
 
             // Sum the initial total for discounts to be applied to
             var total = _items.Sum(i => i.Price);

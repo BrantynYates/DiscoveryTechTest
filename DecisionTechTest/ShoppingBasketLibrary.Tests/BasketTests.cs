@@ -17,6 +17,7 @@ namespace ShoppingBasketLibrary.Tests
             Assert.Throws<ArgumentNullException>(() => basket.AddItem(null));
         }
 
+
         [Fact]
         public void AddItem_succeeds()
         {
